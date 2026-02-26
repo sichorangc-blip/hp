@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iii 관리자 페이지</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="section">
+      <div class="container">
+        <h1>iii 관리자 페이지</h1>
+        <p class="hint">비밀번호 인증 후 콘텐츠를 수정하세요. 저장 후 <a href="/">메인 페이지</a>에서 확인 가능합니다.</p>
+      </div>
+    </main>
+
+    <aside id="adminPanel" class="admin-panel hidden" style="position: static; width: min(860px, 92%); margin: 0 auto 2rem; border: 1px solid var(--line); border-radius: 16px;">
+      <div class="admin-header">
+        <h3>콘텐츠 편집</h3>
+      </div>
+
+      <label>
+        히어로 문구
+        <textarea id="inputHeroSubtitle" rows="3"></textarea>
+      </label>
+
+      <label>
+        브랜드 에센스
+        <textarea id="inputEssence" rows="4"></textarea>
+      </label>
+
+      <label>
+        로고 URL
+        <input id="inputLogo" type="url" placeholder="https://..." />
+      </label>
+
+      <h4>신뢰 포인트 (줄바꿈으로 구분)</h4>
+      <textarea id="inputTrust" rows="4"></textarea>
+
+      <h4>제품 카테고리 JSON</h4>
+      <p class="hint">형식: [{"name":"KF-94","items":["대형"]}]</p>
+      <textarea id="inputProducts" rows="7"></textarea>
+
+      <h4>룩북 JSON</h4>
+      <p class="hint">형식: [{"title":"샘플","image":"https://...","description":"설명"}]</p>
+      <textarea id="inputLookbook" rows="7"></textarea>
+
+      <div class="admin-actions">
+        <button id="saveBtn" class="btn" type="button">저장</button>
+        <button id="resetBtn" class="btn btn-light" type="button">기본값 복원</button>
+        <button id="exportBtn" class="btn btn-ghost" type="button">데이터 내보내기</button>
+      </div>
+    </aside>
+
+    <div id="loginModal" class="modal" aria-hidden="false">
+      <div class="modal-card">
+        <h3>관리자 인증</h3>
+        <p>초기 비밀번호: <code>iset2026!</code></p>
+        <input id="adminPassword" type="password" placeholder="비밀번호 입력" />
+        <div class="hero-actions">
+          <button id="loginBtn" class="btn" type="button">입장</button>
+        </div>
+        <p id="loginError" class="error"></p>
+      </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="admin.js"></script>
+  </body>
+</html>

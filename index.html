@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>아이셋(iii) | Set for us, I set</title>
+    <meta
+      name="description"
+      content="아이셋(iii) 브랜드/회사 소개, 제품 안내, 룩북, 스마트스토어 및 SNS 연결을 제공하는 반응형 홈페이지"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <div class="brand-area">
+          <img id="brandLogo" class="brand-logo" alt="아이셋 로고" />
+          <div>
+            <p class="brand-kor" id="brandNameKor">아이셋</p>
+            <p class="brand-eng" id="brandNameEng">iii</p>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="#about">브랜드</a>
+          <a href="#products">제품</a>
+          <a href="#lookbook">룩북</a>
+          <a href="#contact">연결</a>
+        </nav>
+        
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <span class="pill">생활용품 전문 브랜드</span>
+            <h1 id="heroTitle">Set for us, I set</h1>
+            <p id="heroSubtitle" class="hero-copy"></p>
+            <div class="hero-actions">
+              <a class="btn" id="smartstoreLink" target="_blank" rel="noreferrer">스마트스토어 바로가기</a>
+              <a class="btn btn-light" href="#products">제품 보기</a>
+            </div>
+          </div>
+          <div class="hero-card" id="heroCardText"></div>
+        </div>
+      </section>
+
+      <section id="about" class="section">
+        <div class="container">
+          <h2>브랜드 & 회사 소개</h2>
+          <div class="about-grid">
+            <article class="card">
+              <h3>브랜드 에센스</h3>
+              <p id="brandEssence"></p>
+            </article>
+            <article class="card">
+              <h3>신뢰 포인트</h3>
+              <ul id="trustPoints"></ul>
+            </article>
+            <article class="card">
+              <h3>운영 방식</h3>
+              <ul>
+                <li>무리한 판매 기능 없이 신뢰 중심의 정보 제공</li>
+                <li>스마트스토어 연동으로 실제 구매는 외부 플랫폼에서 진행</li>
+                <li>모바일 우선 설계로 어디서든 동일한 브랜드 경험</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="products" class="section alt">
+        <div class="container">
+          <div class="section-head">
+            <h2>제품 소개</h2>
+            <p>카테고리 확장을 고려한 구조입니다. 관리자 페이지에서 제품군을 자유롭게 추가할 수 있습니다.</p>
+          </div>
+          <div id="productCategories" class="product-grid"></div>
+        </div>
+      </section>
+
+      <section id="lookbook" class="section">
+        <div class="container">
+          <div class="section-head">
+            <h2>룩북</h2>
+            <p>브랜드 분위기와 제품 사용 장면을 이미지로 전달하세요.</p>
+          </div>
+          <div id="lookbookGrid" class="lookbook-grid"></div>
+        </div>
+      </section>
+
+      <section id="contact" class="section alt">
+        <div class="container">
+          <h2>채널 연결</h2>
+          <div class="link-cards">
+            <a class="card link-card" id="smartstoreCard" target="_blank" rel="noreferrer">
+              <h3>네이버 스마트스토어</h3>
+              <p>제품 구매/문의</p>
+            </a>
+            <a class="card link-card" id="instagramCard" target="_blank" rel="noreferrer">
+              <h3>Instagram</h3>
+              <p>브랜드 소식/룩북</p>
+            </a>
+            <a class="card link-card" id="blogCard" target="_blank" rel="noreferrer">
+              <h3>네이버 블로그</h3>
+              <p>상세 스토리/공지</p>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p><strong>iii (아이셋)</strong> · Set for us, I set</p>
+        <p>© <span id="year"></span> iii. All rights reserved.</p>
+        <p class="footer-admin"><a href="admin.html">관리자 페이지</a></p>
+      </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
