@@ -44,3 +44,10 @@
 - 로고는 관리자 페이지의 `로고 URL`에 실제 브랜드 로고 주소를 넣어 교체하세요.
 - `제품 카테고리 JSON`과 `룩북 JSON`으로 손쉽게 확장할 수 있습니다.
 - 관리자 비밀번호는 `admin.js`의 `ADMIN_PASSWORD` 값을 변경하세요.
+
+
+### 4) 404가 뜰 때 빠른 체크
+1. 저장소 루트에 `index.html`이 있는지 확인
+2. GitHub 저장소 → Settings → Pages에서 Source를 **GitHub Actions**로 변경
+3. Actions 탭에서 `Deploy static site to GitHub Pages` 워크플로우가 성공했는지 확인
+4. 배포 주소는 `https://<계정>.github.io/<저장소명>/` 형식인지 확인
