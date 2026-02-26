@@ -51,3 +51,6 @@
 2. GitHub 저장소 → Settings → Pages에서 Source를 **GitHub Actions**로 변경
 3. Actions 탭에서 `Deploy static site to GitHub Pages` 워크플로우가 성공했는지 확인
 4. 배포 주소는 `https://<계정>.github.io/<저장소명>/` 형식인지 확인
+
+5. 브랜치가 `master`인 경우도 있으니 Pages 워크플로우가 실행된 브랜치를 확인
+6. `404.html` fallback이 배포되었는지 확인 (경로 진입 시 자동으로 `index.html`로 이동)
