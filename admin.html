@@ -14,7 +14,7 @@
       </div>
     </main>
 
-    <aside id="adminPanel" class="admin-panel hidden" style="position: static; width: min(860px, 92%); margin: 0 auto 2rem; border: 1px solid var(--line); border-radius: 16px;">
+    <aside id="adminPanel" class="admin-panel hidden" style="position: static; width: min(900px, 92%); margin: 0 auto 2rem; border: 1px solid var(--line); border-radius: 16px;">
       <div class="admin-header">
         <h3>콘텐츠 편집</h3>
       </div>
@@ -33,17 +33,84 @@
         로고 URL
         <input id="inputLogo" type="url" placeholder="https://..." />
       </label>
+      <label>
+        또는 로고 파일 업로드 (자동 변환)
+        <input id="inputLogoFile" type="file" accept="image/*" />
+      </label>
 
       <h4>신뢰 포인트 (줄바꿈으로 구분)</h4>
       <textarea id="inputTrust" rows="4"></textarea>
+
+      <h4>제품 카테고리 빠른 추가</h4>
+      <label>
+        카테고리명
+        <input id="quickCategoryName" type="text" placeholder="예: KF-AD 블랙" />
+      </label>
+      <label>
+        품목 (줄바꿈 구분)
+        <textarea id="quickCategoryItems" rows="3" placeholder="대형&#10;중형&#10;소형"></textarea>
+      </label>
+      <div class="admin-actions">
+        <button id="addCategoryBtn" class="btn btn-light" type="button">카테고리 추가</button>
+      </div>
 
       <h4>제품 카테고리 JSON</h4>
       <p class="hint">형식: [{"name":"KF-94","items":["대형"]}]</p>
       <textarea id="inputProducts" rows="7"></textarea>
 
+      <h4>룩북 빠른 추가</h4>
+      <label>
+        제목
+        <input id="quickLookbookTitle" type="text" placeholder="예: Spring Daily" />
+      </label>
+      <label>
+        이미지 URL
+        <input id="quickLookbookImage" type="url" placeholder="https://..." />
+      </label>
+      <label>
+        또는 이미지 파일 업로드
+        <input id="quickLookbookImageFile" type="file" accept="image/*" />
+      </label>
+      <label>
+        설명
+        <textarea id="quickLookbookDescription" rows="2"></textarea>
+      </label>
+      <div class="admin-actions">
+        <button id="addLookbookBtn" class="btn btn-light" type="button">룩북 항목 추가</button>
+      </div>
+
+      <h4>룩북 모드</h4>
+      <label>
+        <select id="inputLookbookMode">
+          <option value="manual">직접 이미지 입력</option>
+          <option value="instagram">인스타 해시태그 링크 모드</option>
+        </select>
+      </label>
+      <label>
+        인스타 해시태그 (쉼표 구분)
+        <input id="inputInstagramTags" type="text" placeholder="iset, setforus" />
+      </label>
+      <p class="hint">인스타그램 정책상 외부 사이트에서 해시태그 이미지 원본을 자동 수집하는 것은 제한될 수 있어, 링크 카드 방식으로 제공됩니다.</p>
+
       <h4>룩북 JSON</h4>
       <p class="hint">형식: [{"title":"샘플","image":"https://...","description":"설명"}]</p>
       <textarea id="inputLookbook" rows="7"></textarea>
+
+      <h4>관리자 비밀번호 변경</h4>
+      <label>
+        새 비밀번호
+        <input id="newPassword" type="password" placeholder="8자 이상 권장" />
+      </label>
+      <label>
+        새 비밀번호 확인
+        <input id="confirmPassword" type="password" placeholder="비밀번호 재입력" />
+      </label>
+      <div class="admin-actions">
+        <button id="changePasswordBtn" class="btn btn-ghost" type="button">비밀번호 변경</button>
+      </div>
+
+      <h4>이미지 업로드가 필요할 때</h4>
+      <p class="hint">FTP 없이도 가능합니다: ① GitHub 저장소에 이미지 업로드 후 Raw URL 사용, ② Cloudinary/Imgur 같은 무료 이미지 호스팅 사용.</p>
 
       <div class="admin-actions">
         <button id="saveBtn" class="btn" type="button">저장</button>

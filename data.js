@@ -1,4 +1,6 @@
 window.III_STORAGE_KEY = 'iii_homepage_content_v1';
+window.III_ADMIN_PASSWORD_KEY = 'iii_admin_password_v1';
+window.III_DEFAULT_ADMIN_PASSWORD = 'iset2026!';
 window.III_DEFAULT_DATA = {
   brandNameKor: '아이셋',
   brandNameEng: 'iii',
@@ -46,6 +48,8 @@ window.III_DEFAULT_DATA = {
       description: 'KF AD 화이트 라인의 깔끔한 무드'
     }
   ],
+  lookbookInstagramTags: ['iset', '아이셋', 'setforus'],
+  lookbookMode: 'manual',
   links: {
     smartstore: 'https://smartstore.naver.com/iii_setting',
     instagram: 'https://www.instagram.com/iset_setforus',
@@ -65,4 +69,12 @@ window.loadIIIData = function loadIIIData() {
 
 window.saveIIIData = function saveIIIData(content) {
   localStorage.setItem(window.III_STORAGE_KEY, JSON.stringify(content));
+};
+
+window.loadAdminPassword = function loadAdminPassword() {
+  return localStorage.getItem(window.III_ADMIN_PASSWORD_KEY) || window.III_DEFAULT_ADMIN_PASSWORD;
+};
+
+window.saveAdminPassword = function saveAdminPassword(password) {
+  localStorage.setItem(window.III_ADMIN_PASSWORD_KEY, password);
 };
