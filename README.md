@@ -54,3 +54,19 @@
 
 5. 브랜치가 `master`인 경우도 있으니 Pages 워크플로우가 실행된 브랜치를 확인
 6. `404.html` fallback이 배포되었는지 확인 (경로 진입 시 자동으로 `index.html`로 이동)
+
+
+### 9) 지금 화면처럼 `pages-build-deployment`만 보일 때 (스크린샷 케이스)
+- 이 화면은 **GitHub 기본 Pages 빌드 워크플로우**만 보이는 상태입니다.
+- 보통 원인은 2가지입니다:
+  1. Pages Source가 `Deploy from a branch`로 되어 있음
+  2. 우리가 만든 `.github/workflows/pages.yml` 파일이 기본 브랜치(`main`)에 아직 없음
+
+해결 순서:
+1. **Settings → Pages → Source**를 `GitHub Actions`로 변경
+2. `main` 브랜치의 파일 목록에서 `.github/workflows/pages.yml` 존재 확인
+3. 없으면 이 PR을 `main`에 머지(또는 `work` 브랜치 내용을 `main`으로 push)
+4. 다시 **Actions** 탭으로 이동
+5. 왼쪽에 `Deploy static site to GitHub Pages`가 보이면 클릭 후 실행
+
+참고: `pages-build-deployment`만 있는 상태에서도 branch 배포는 되지만, 현재 프로젝트는 Actions 기반 배포를 기준으로 작성되어 있어 Source를 `GitHub Actions`로 맞추는 것이 가장 안전합니다.
