@@ -70,3 +70,20 @@
 5. 왼쪽에 `Deploy static site to GitHub Pages`가 보이면 클릭 후 실행
 
 참고: `pages-build-deployment`만 있는 상태에서도 branch 배포는 되지만, 현재 프로젝트는 Actions 기반 배포를 기준으로 작성되어 있어 Source를 `GitHub Actions`로 맞추는 것이 가장 안전합니다.
+
+
+### 10) 현재처럼 `main`은 비어 있고 codex 브랜치만 있을 때 (지금 상태)
+지금 캡처처럼 `main`은 초기 커밋만 있고, 실제 홈페이지 파일은 `codex/...` 브랜치(PR #2)에 있는 상태입니다.
+
+가장 빠른 복구 순서:
+1. GitHub 상단 **Pull requests** 클릭
+2. `#2` PR 열기 (브랜치: `codex/create-mobile-responsive-homepage-for-brand`)
+3. 아래 **Merge pull request** → **Confirm merge**
+4. 머지 후 저장소 **Code** 탭에서 브랜치를 `main`으로 두고 `index.html` 파일이 보이는지 확인
+5. **Settings → Pages** 에서 아래 중 하나 선택
+   - 간단 배포: `Deploy from a branch` + Branch `main` + `/ (root)`
+   - Actions 배포: `GitHub Actions` + Actions 탭에서 `Deploy static site to GitHub Pages` 실행
+
+확인 URL:
+- 메인: `https://sichorangc-blip.github.io/hp/`
+- 관리자: `https://sichorangc-blip.github.io/hp/admin.html`
