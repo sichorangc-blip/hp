@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iii 관리자 페이지</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="section">
+      <div class="container">
+        <h1>iii 관리자 페이지</h1>
+        <p class="hint">비밀번호 인증 후 콘텐츠를 수정하세요. 저장 후 <a href="./index.html">메인 페이지</a>에서 확인 가능합니다.</p>
+      </div>
+    </main>
+
+    <aside id="adminPanel" class="admin-panel hidden" style="position: static; width: min(900px, 92%); margin: 0 auto 2rem; border: 1px solid var(--line); border-radius: 16px;">
+      <div class="admin-header">
+        <h3>콘텐츠 편집</h3>
+        <p class="hint" id="adminBuildVersion"></p>
+      </div>
+
+      <label>
+        히어로 문구
+        <textarea id="inputHeroSubtitle" rows="3"></textarea>
+      </label>
+
+      <label>
+        브랜드 에센스
+        <textarea id="inputEssence" rows="4"></textarea>
+      </label>
+
+      <label>
+        로고 URL
+        <input id="inputLogo" type="url" placeholder="https://..." />
+      </label>
+      <div class="upload-row">
+        <label class="upload-file-label" for="inputLogoFile">로고 파일 선택</label>
+        <input id="inputLogoFile" class="file-hidden" type="file" accept="image/*" />
+        <button id="applyLogoFileBtn" class="btn btn-light" type="button">선택 이미지 적용</button>
+      </div>
+
+      <h4>신뢰 포인트 (줄바꿈으로 구분)</h4>
+      <textarea id="inputTrust" rows="4"></textarea>
+
+      <h4>제품 카테고리 빠른 추가</h4>
+      <label>
+        카테고리명
+        <input id="quickCategoryName" type="text" placeholder="예: KF-AD 블랙" />
+      </label>
+      <label>
+        품목 (줄바꿈 구분)
+        <textarea id="quickCategoryItems" rows="3" placeholder="대형&#10;중형&#10;소형"></textarea>
+      </label>
+      <div class="admin-actions">
+        <button id="addCategoryBtn" class="btn btn-light" type="button">카테고리 추가</button>
+      </div>
+
+      <h4>제품 카테고리 JSON</h4>
+      <p class="hint">형식: [{"name":"KF-94","items":["대형"]}]</p>
+      <textarea id="inputProducts" rows="7"></textarea>
+
+      <h4>룩북 빠른 추가</h4>
+      <label>
+        제목
+        <input id="quickLookbookTitle" type="text" placeholder="예: Spring Daily" />
+      </label>
+      <label>
+        이미지 URL
+        <input id="quickLookbookImage" type="url" placeholder="https://..." />
+      </label>
+      <div class="upload-row">
+        <label class="upload-file-label" for="quickLookbookImageFile">룩북 파일 선택</label>
+        <input id="quickLookbookImageFile" class="file-hidden" type="file" accept="image/*" />
+        <button id="applyLookbookFileBtn" class="btn btn-light" type="button">선택 이미지 적용</button>
+      </div>
+      <label>
+        설명
+        <textarea id="quickLookbookDescription" rows="2"></textarea>
+      </label>
+      <div class="admin-actions">
+        <button id="addLookbookBtn" class="btn btn-light" type="button">룩북 항목 추가</button>
+      </div>
+
+      <h4>룩북 모드</h4>
+      <label>
+        <select id="inputLookbookMode">
+          <option value="manual">직접 이미지 입력</option>
+          <option value="instagram">인스타 해시태그 링크 모드</option>
+        </select>
+      </label>
+      <label>
+        인스타 해시태그 (쉼표 구분)
+        <input id="inputInstagramTags" type="text" placeholder="iset, setforus" />
+      </label>
+      <div class="admin-actions">
+        <input id="newTagInput" type="text" placeholder="#신제품" />
+        <button id="addTagBtn" class="btn btn-light" type="button">해시태그 추가</button>
+        <button id="clearTagsBtn" class="btn btn-ghost" type="button">해시태그 비우기</button>
+      </div>
+      <p id="tagPreview" class="hint"></p>
+      <p class="hint">인스타그램 정책상 외부 사이트에서 해시태그 이미지 원본을 자동 수집하는 것은 제한될 수 있어, 링크 카드 방식으로 제공됩니다.</p>
+
+      <h4>룩북 JSON</h4>
+      <p class="hint">형식: [{"title":"샘플","image":"https://...","description":"설명"}]</p>
+      <textarea id="inputLookbook" rows="7"></textarea>
+
+      <h4>관리자 비밀번호 변경</h4>
+      <label>
+        새 비밀번호
+        <input id="newPassword" type="password" placeholder="8자 이상 권장" />
+      </label>
+      <label>
+        새 비밀번호 확인
+        <input id="confirmPassword" type="password" placeholder="비밀번호 재입력" />
+      </label>
+      <div class="admin-actions">
+        <button id="changePasswordBtn" class="btn btn-ghost" type="button">비밀번호 변경</button>
+      </div>
+
+      <h4>이미지 업로드가 필요할 때</h4>
+      <p class="hint">FTP 없이도 가능합니다: ① GitHub 저장소에 이미지 업로드 후 Raw URL 사용, ② Cloudinary/Imgur 같은 무료 이미지 호스팅 사용.</p>
+
+      <div class="admin-actions">
+        <button id="saveBtn" class="btn" type="button">저장</button>
+        <button id="resetBtn" class="btn btn-light" type="button">기본값 복원</button>
+        <button id="exportBtn" class="btn btn-ghost" type="button">데이터 내보내기</button>
+      </div>
+    </aside>
+
+    <div id="loginModal" class="modal" aria-hidden="false">
+      <div class="modal-card">
+        <h3>관리자 인증</h3>
+        <p>초기 비밀번호: <code>iset2026!</code></p>
+        <input id="adminPassword" type="password" placeholder="비밀번호 입력" />
+        <div class="hero-actions">
+          <button id="loginBtn" class="btn" type="button">입장</button>
+        </div>
+        <p id="loginError" class="error"></p>
+        <p class="hint">관리자 UI 버전: <span id="loginBuildVersion"></span></p>
+      </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="admin.js"></script>
+  </body>
+</html>

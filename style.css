@@ -1,0 +1,345 @@
+:root {
+  --bg: #f4f6f8;
+  --card: #ffffff;
+  --text: #121212;
+  --muted: #5a6171;
+  --point: #1f4f95;
+  --line: #d8dee7;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  width: min(1120px, 92%);
+  margin: 0 auto;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(8px);
+}
+
+.topbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.7rem 0;
+}
+
+.brand-area {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.brand-logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  object-fit: cover;
+}
+
+.brand-kor,
+.brand-eng {
+  margin: 0;
+  line-height: 1.2;
+}
+
+.brand-kor {
+  font-weight: 700;
+}
+
+.brand-eng {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.section {
+  padding: 4rem 0;
+}
+
+.alt {
+  background: #eef2f6;
+}
+
+.hero {
+  padding: 4.5rem 0 3rem;
+  background: linear-gradient(130deg, #e8f1ff, #f7f8fb 52%, #efeffa);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+.hero-copy {
+  font-size: 1.05rem;
+  color: var(--muted);
+}
+
+.hero-card,
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 1.1rem;
+}
+
+.hero-card {
+  min-height: 180px;
+  box-shadow: 0 12px 30px rgba(29, 34, 46, 0.08);
+}
+
+.pill {
+  display: inline-block;
+  background: #0c3f8f;
+  color: #fff;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+}
+
+.btn {
+  border: none;
+  background: var(--point);
+  color: #fff;
+  padding: 0.6rem 0.95rem;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-light {
+  background: #fff;
+  color: #1e2b40;
+  border: 1px solid var(--line);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #1e2b40;
+  border: 1px solid var(--line);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.about-grid,
+.product-grid,
+.link-cards {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.lookbook-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.lookbook-grid figure {
+  margin: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--line);
+}
+
+.lookbook-grid img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.lookbook-grid figcaption {
+  padding: 0.8rem;
+  font-size: 0.94rem;
+}
+
+.link-card {
+  text-decoration: none;
+  color: var(--text);
+}
+
+.admin-panel {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: min(420px, 95vw);
+  height: 100dvh;
+  overflow: auto;
+  background: #fff;
+  border-left: 1px solid var(--line);
+  padding: 1rem;
+  z-index: 20;
+}
+
+.admin-panel label,
+.admin-panel textarea,
+.admin-panel input {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.8rem;
+}
+
+.admin-panel textarea,
+.admin-panel input {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.55rem;
+  font: inherit;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: grid;
+  place-items: center;
+  z-index: 40;
+}
+
+.modal-card {
+  width: min(380px, 92vw);
+  background: #fff;
+  border-radius: 16px;
+  padding: 1rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.hint,
+.error {
+  color: var(--muted);
+  font-size: 0.87rem;
+}
+
+.error {
+  color: #cf2450;
+}
+
+.footer {
+  border-top: 1px solid var(--line);
+  padding: 2rem 0;
+  color: var(--muted);
+}
+
+
+.footer-admin {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.footer-admin a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  .nav-links {
+    display: none;
+  }
+
+  .hero-grid,
+  .about-grid,
+  .product-grid,
+  .lookbook-grid,
+  .link-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding-top: 3.5rem;
+  }
+}
+
+
+.admin-panel select {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.55rem;
+  font: inherit;
+  width: 100%;
+  margin-bottom: 0.8rem;
+}
+
+.hashtag-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  justify-content: space-between;
+}
+
+
+.upload-row {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.upload-file-label {
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  padding: 0.55rem 0.8rem;
+  cursor: pointer;
+  background: #fff;
+}
+
+.file-hidden {
+  position: absolute;
+  left: -9999px;
+}
+
+.admin-actions input[type='text'] {
+  min-width: 160px;
+  flex: 1;
+}
