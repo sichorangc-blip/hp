@@ -33,10 +33,11 @@
         로고 URL
         <input id="inputLogo" type="url" placeholder="https://..." />
       </label>
-      <label>
-        또는 로고 파일 업로드 (자동 변환)
-        <input id="inputLogoFile" type="file" accept="image/*" />
-      </label>
+      <div class="upload-row">
+        <label class="upload-file-label" for="inputLogoFile">로고 파일 선택</label>
+        <input id="inputLogoFile" class="file-hidden" type="file" accept="image/*" />
+        <button id="applyLogoFileBtn" class="btn btn-light" type="button">선택 이미지 적용</button>
+      </div>
 
       <h4>신뢰 포인트 (줄바꿈으로 구분)</h4>
       <textarea id="inputTrust" rows="4"></textarea>
@@ -67,10 +68,11 @@
         이미지 URL
         <input id="quickLookbookImage" type="url" placeholder="https://..." />
       </label>
-      <label>
-        또는 이미지 파일 업로드
-        <input id="quickLookbookImageFile" type="file" accept="image/*" />
-      </label>
+      <div class="upload-row">
+        <label class="upload-file-label" for="quickLookbookImageFile">룩북 파일 선택</label>
+        <input id="quickLookbookImageFile" class="file-hidden" type="file" accept="image/*" />
+        <button id="applyLookbookFileBtn" class="btn btn-light" type="button">선택 이미지 적용</button>
+      </div>
       <label>
         설명
         <textarea id="quickLookbookDescription" rows="2"></textarea>
@@ -90,6 +92,12 @@
         인스타 해시태그 (쉼표 구분)
         <input id="inputInstagramTags" type="text" placeholder="iset, setforus" />
       </label>
+      <div class="admin-actions">
+        <input id="newTagInput" type="text" placeholder="#신제품" />
+        <button id="addTagBtn" class="btn btn-light" type="button">해시태그 추가</button>
+        <button id="clearTagsBtn" class="btn btn-ghost" type="button">해시태그 비우기</button>
+      </div>
+      <p id="tagPreview" class="hint"></p>
       <p class="hint">인스타그램 정책상 외부 사이트에서 해시태그 이미지 원본을 자동 수집하는 것은 제한될 수 있어, 링크 카드 방식으로 제공됩니다.</p>
 
       <h4>룩북 JSON</h4>

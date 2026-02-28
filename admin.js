@@ -2,6 +2,18 @@ const $ = (selector) => document.querySelector(selector);
 
 let content = window.loadIIIData();
 
+function normalizeTags(raw) {
+  return raw
+    .split(',')
+    .map((v) => v.trim().replace(/^#/, ''))
+    .filter(Boolean);
+}
+
+function renderTagPreview() {
+  const tags = normalizeTags($('#inputInstagramTags').value);
+  $('#tagPreview').textContent = tags.length ? `현재 해시태그: ${tags.map((tag) => `#${tag}`).join(', ')}` : '현재 해시태그가 없습니다.';
+}
+
 function fileToDataUrl(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -20,6 +32,7 @@ function populateAdminForm() {
   $('#inputLookbook').value = JSON.stringify(content.lookbook, null, 2);
   $('#inputLookbookMode').value = content.lookbookMode || 'manual';
   $('#inputInstagramTags').value = (content.lookbookInstagramTags || []).join(', ');
+  renderTagPreview();
 }
 
 function openAdminPanel() {
@@ -41,9 +54,12 @@ $('#loginBtn').addEventListener('click', () => {
   }
 });
 
-$('#inputLogoFile').addEventListener('change', async (event) => {
-  const file = event.target.files?.[0];
-  if (!file) return;
+$('#applyLogoFileBtn').addEventListener('click', async () => {
+  const file = $('#inputLogoFile').files?.[0];
+  if (!file) {
+    alert('먼저 로고 파일을 선택해 주세요.');
+    return;
+  }
   try {
     const dataUrl = await fileToDataUrl(file);
     $('#inputLogo').value = dataUrl;
@@ -67,6 +83,43 @@ $('#addCategoryBtn').addEventListener('click', () => {
   $('#quickCategoryName').value = '';
   $('#quickCategoryItems').value = '';
 });
+
+
+$('#applyLookbookFileBtn').addEventListener('click', async () => {
+  const file = $('#quickLookbookImageFile').files?.[0];
+  if (!file) {
+    alert('먼저 룩북 파일을 선택해 주세요.');
+    return;
+  }
+  try {
+    const dataUrl = await fileToDataUrl(file);
+    $('#quickLookbookImage').value = dataUrl;
+    alert('룩북 이미지가 URL 입력칸에 반영되었습니다. 이제 "룩북 항목 추가"를 누르세요.');
+  } catch (error) {
+    alert(error.message);
+  }
+});
+
+$('#addTagBtn').addEventListener('click', () => {
+  const tag = $('#newTagInput').value.trim().replace(/^#/, '');
+  if (!tag) {
+    alert('추가할 해시태그를 입력해 주세요.');
+    return;
+  }
+  const tags = normalizeTags($('#inputInstagramTags').value);
+  if (!tags.includes(tag)) tags.push(tag);
+  $('#inputInstagramTags').value = tags.join(', ');
+  $('#newTagInput').value = '';
+  renderTagPreview();
+});
+
+$('#clearTagsBtn').addEventListener('click', () => {
+  $('#inputInstagramTags').value = '';
+  $('#newTagInput').value = '';
+  renderTagPreview();
+});
+
+$('#inputInstagramTags').addEventListener('input', renderTagPreview);
 
 $('#addLookbookBtn').addEventListener('click', async () => {
   const title = $('#quickLookbookTitle').value.trim();
@@ -127,10 +180,7 @@ $('#saveBtn').addEventListener('click', () => {
     content.productCategories = JSON.parse($('#inputProducts').value);
     content.lookbook = JSON.parse($('#inputLookbook').value);
     content.lookbookMode = $('#inputLookbookMode').value;
-    content.lookbookInstagramTags = $('#inputInstagramTags').value
-      .split(',')
-      .map((v) => v.trim().replace(/^#/, ''))
-      .filter(Boolean);
+    content.lookbookInstagramTags = normalizeTags($('#inputInstagramTags').value);
 
     window.saveIIIData(content);
     alert('저장되었습니다. 메인 페이지를 새로고침하면 반영됩니다.');

@@ -316,3 +316,30 @@ img {
   gap: 0.6rem;
   justify-content: space-between;
 }
+
+
+.upload-row {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.upload-file-label {
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  padding: 0.55rem 0.8rem;
+  cursor: pointer;
+  background: #fff;
+}
+
+.file-hidden {
+  position: absolute;
+  left: -9999px;
+}
+
+.admin-actions input[type='text'] {
+  min-width: 160px;
+  flex: 1;
+}
