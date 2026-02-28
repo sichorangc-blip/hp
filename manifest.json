@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Naver Blog Helper (Manual)",
+  "version": "1.0.0",
+  "description": "키워드 검색과 수동 상호작용(댓글/서로이웃)을 도와주는 보조 확장 프로그램",
+  "permissions": ["storage", "tabs", "scripting", "activeTab", "clipboardWrite"],
+  "host_permissions": [
+    "https://search.naver.com/*",
+    "https://blog.naver.com/*",
+    "https://m.blog.naver.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://search.naver.com/*",
+        "https://blog.naver.com/*",
+        "https://m.blog.naver.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

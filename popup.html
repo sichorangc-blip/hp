@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Naver Blog Helper</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <main>
+    <h1>Naver Blog Helper</h1>
+    <p class="sub">자동 작성/자동 댓글 대신, 수동 승인 워크플로우를 지원합니다.</p>
+
+    <label for="keyword">키워드</label>
+    <input id="keyword" type="text" placeholder="예: 길거리 음식" />
+    <button id="searchBtn">네이버 블로그 검색 열기</button>
+
+    <hr />
+
+    <label for="commentTemplate">댓글 템플릿</label>
+    <textarea id="commentTemplate" rows="4" placeholder="안녕하세요. 글 잘 보고 갑니다 :)\n좋은 하루 보내세요!"></textarea>
+
+    <div class="row">
+      <button id="saveTemplateBtn">템플릿 저장</button>
+      <button id="copyTemplateBtn">템플릿 복사</button>
+    </div>
+
+    <button id="openNextBtn" class="secondary">검색 결과에서 다음 포스팅 열기</button>
+    <button id="highlightBtn" class="secondary">현재 글에서 댓글/서로이웃 버튼 강조</button>
+
+    <p class="note">※ 실제 댓글 등록/서로이웃 신청 클릭은 직접 진행해야 합니다.</p>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>
