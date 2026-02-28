@@ -44,6 +44,13 @@ function closeLoginModal() {
   $('#loginModal').classList.add('hidden');
 }
 
+
+function setBuildVersion() {
+  const version = window.III_ADMIN_UI_VERSION || 'unknown';
+  $('#adminBuildVersion').textContent = `현재 관리자 UI 버전: ${version}`;
+  $('#loginBuildVersion').textContent = version;
+}
+
 $('#loginBtn').addEventListener('click', () => {
   const currentPassword = window.loadAdminPassword();
   if ($('#adminPassword').value === currentPassword) {
@@ -205,3 +212,5 @@ $('#exportBtn').addEventListener('click', () => {
   a.click();
   URL.revokeObjectURL(url);
 });
+
+setBuildVersion();
