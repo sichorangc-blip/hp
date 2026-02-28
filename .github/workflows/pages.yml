@@ -2,10 +2,6 @@ name: Deploy static site to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
-      - work
-      - master
   workflow_dispatch:
 
 permissions:
@@ -27,6 +23,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Verify required files
+        run: |
+          test -f index.html
+          test -f admin.html
+          echo "Required static files exist."
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
@@ -38,3 +40,6 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Print deployed URL
+        run: echo "Deployed URL -> ${{ steps.deployment.outputs.page_url }}"

@@ -113,3 +113,17 @@
 - `admin.html` 로그인 창 하단의 **관리자 UI 버전**을 확인하세요.
 - 최신 버전이 안 보이면 `Ctrl+F5`(강력 새로고침) 후 다시 확인하세요.
 - 그래도 구버전이면 아직 `main`에 머지/배포가 안 된 상태일 수 있습니다.
+
+
+### 자동 반영(업데이트 자동 배포) 설정
+- 이제 워크플로우는 **브랜치 제한 없이 push마다 자동 실행**되도록 되어 있습니다.
+- 즉, 코드 수정 후 GitHub에 커밋/푸시하면 별도 수동 배포 없이 자동 반영됩니다.
+
+중요:
+1. **새 파일 `static.yml`을 만들 필요가 없습니다.**
+2. 이미 있는 `/.github/workflows/pages.yml` 파일만 수정/유지하면 됩니다.
+3. GitHub 웹에서 "A file with the same name already exists"가 뜨면, `Add file`이 아니라 기존 파일 `pages.yml`을 **Edit(연필 아이콘)** 으로 수정해야 합니다.
+
+빠른 확인:
+- Actions 탭에서 `Deploy static site to GitHub Pages`가 push 때마다 실행되는지 확인
+- 실행 완료 후 로그의 `Deployed URL` 접속
