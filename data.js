@@ -1,7 +1,7 @@
 window.III_STORAGE_KEY = 'iii_homepage_content_v1';
 window.III_ADMIN_PASSWORD_KEY = 'iii_admin_password_v1';
 window.III_DEFAULT_ADMIN_PASSWORD = 'iset2026!';
-window.III_ADMIN_UI_VERSION = 'admin-ui-2026-02-28-2';
+window.III_ADMIN_UI_VERSION = 'admin-ui-2026-02-28-3';
 window.III_DEFAULT_DATA = {
   brandNameKor: '아이셋',
   brandNameEng: 'iii',
@@ -101,4 +101,8 @@ window.loadAdminPassword = function loadAdminPassword() {
 
 window.saveAdminPassword = function saveAdminPassword(password) {
   localStorage.setItem(window.III_ADMIN_PASSWORD_KEY, password);
+};
+
+window.resetAdminPassword = function resetAdminPassword() {
+  localStorage.removeItem(window.III_ADMIN_PASSWORD_KEY);
 };

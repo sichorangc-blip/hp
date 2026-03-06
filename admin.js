@@ -52,6 +52,14 @@ function setBuildVersion() {
   $('#loginBuildVersion').textContent = version;
 }
 
+
+$('#resetPasswordBtn').addEventListener('click', () => {
+  if (!confirm('관리자 비밀번호를 초기값(iset2026!)으로 되돌릴까요?')) return;
+  window.resetAdminPassword();
+  $('#adminPassword').value = '';
+  $('#loginError').textContent = '비밀번호가 초기화되었습니다. 초기 비밀번호로 다시 로그인하세요.';
+});
+
 $('#loginBtn').addEventListener('click', () => {
   const currentPassword = window.loadAdminPassword();
   if ($('#adminPassword').value === currentPassword) {
