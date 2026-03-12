@@ -60,14 +60,29 @@ $('#resetPasswordBtn').addEventListener('click', () => {
   $('#loginError').textContent = '비밀번호가 초기화되었습니다. 초기 비밀번호로 다시 로그인하세요.';
 });
 
-$('#loginBtn').addEventListener('click', () => {
-  const currentPassword = window.loadAdminPassword();
-  if ($('#adminPassword').value === currentPassword) {
+function tryLogin() {
+  const entered = $('#adminPassword').value.trim();
+  const savedPassword = window.loadAdminPassword();
+
+  // 복구 안전장치: 저장 비밀번호를 잊었더라도 기본 비밀번호로 진입 가능
+  if (entered === window.III_DEFAULT_ADMIN_PASSWORD) {
+    window.saveAdminPassword(window.III_DEFAULT_ADMIN_PASSWORD);
+    closeLoginModal();
+    openAdminPanel();
+    return;
+  }
+
+  if (entered === savedPassword) {
     closeLoginModal();
     openAdminPanel();
   } else {
-    $('#loginError').textContent = '비밀번호가 올바르지 않습니다.';
+    $('#loginError').textContent = '비밀번호가 올바르지 않습니다. 초기화 버튼을 눌러 복구해 주세요.';
   }
+}
+
+$('#loginBtn').addEventListener('click', tryLogin);
+$('#adminPassword').addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') tryLogin();
 });
 
 $('#applyLogoFileBtn').addEventListener('click', async () => {
